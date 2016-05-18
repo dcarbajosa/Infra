@@ -1,15 +1,6 @@
 #!/bin/bash  -x
 
-#############################################################################
-# DNS client
-##############################################################################
-#nameserver      $DNS_IP
-
-#sed -i "/^plugins=ifcfg-rh/a dns=none" /etc/NetworkManager/NetworkManager.conf
-#sed -i "\$aDNS1=8\.8\.8\.8" /etc/sysconfig/network-scripts/ifcfg-eth0
-sed -i 's/^nameserver 10.0.2.3/nameserver      8.8.8.8/g' /etc/resolv.conf
-
-##############################################################################
+############################################################################
 #install packages needed
 ##############################################################################
 yum install -y system-storage-manager
@@ -17,8 +8,7 @@ yum install -y wget git net-tools bind-utils iptables-services bridge-utils bash
 
 yum update -y
 
-yum -y install \
-    https://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
+yum -y install epel-release
 
 sed -i -e "s/^enabled=1/enabled=0/" /etc/yum.repos.d/epel.repo
 
